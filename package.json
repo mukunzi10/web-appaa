@@ -3,13 +3,14 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "jest-junit": {
-    "outputDirectory": "coverage",
-    "outputName": "junit.xml"
-  },
+  
   "scripts": {
     "test": "jest"
   },
+  "jest-junit": {
+  "outputDirectory": "coverage",
+  "outputName": "junit.xml"
+},
   "keywords": [],
   "author": "",
   "license": "ISC",

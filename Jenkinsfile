@@ -2,10 +2,13 @@ pipeline {
     agent any
 
     tools {
-        nodejs 'NodeJS_18'   // Configured in Jenkins Global Tools
+        // Make sure "NodeJS_18" is defined in:
+        // Manage Jenkins → Global Tool Configuration → NodeJS
+        nodejs 'NodeJS_18'
     }
 
     stages {
+
         stage('Checkout Code') {
             steps {
                 git 'https://github.com/your-org/product-inventory.git'
@@ -26,8 +29,9 @@ pipeline {
     }
 
     post {
-    always {
-        junit 'coverage/junit.xml'
+        always {
+            // Publish Jest JUnit report (ensure jest-junit is configured)
+            junit 'coverage/junit.xml'
+        }
     }
-}
 }
