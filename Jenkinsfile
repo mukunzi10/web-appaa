@@ -8,10 +8,24 @@ pipeline {
     }
 
     stages {
+        stage('Clone'){
+            steps{
+                git branch: 'main', url:'https://github.com/mukunzi10/web-appaa'
+
+            }
+        }
+         stage('Verify Tools') {
+            steps {
+                sh 'php -v' 
+                sh 'npm -v'
+            }
+        }
+
+
 
         stage('Checkout Code') {
             steps {
-                git 'https://github.com/your-org/product-inventory.git'
+                git 'https://github.com/mukunzi10/web-appaa'
             }
         }
 
