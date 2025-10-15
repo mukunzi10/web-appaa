@@ -1,50 +1,35 @@
 pipeline {
     agent any
 
-    tools {
-        // Make sure "NodeJS_18" is defined in:
-        // Manage Jenkins → Global Tool Configuration → NodeJS
-        nodejs 'NodeJS_18'
-    }
-
     stages {
-        stage('Clone'){
-            steps{
-                git branch: 'main', url:'https://github.com/mukunzi10/web-appaa'
-
+        stage('Clone') {
+            steps {
+                git branch: 'main', url: 'https://github.com/mukunzi10/web-appaa'
             }
         }
-         stage('Verify Tools') {
+
+        stage('Verify Tools') {
             steps {
-                sh 'php -v' 
+                sh 'php -v'
                 sh 'npm -v'
-            }
-        }
-
-
-
-        stage('Checkout Code') {
-            steps {
-                git 'https://github.com/mukunzi10/web-appaa'
             }
         }
 
         stage('Install Dependencies') {
             steps {
-                bat 'npm install'
+                sh 'npm install'
             }
         }
 
         stage('Run Tests') {
             steps {
-                bat 'npm test'
+                sh 'npm test'
             }
         }
     }
 
     post {
         always {
-            // Publish Jest JUnit report (ensure jest-junit is configured)
             junit 'coverage/junit.xml'
         }
     }
