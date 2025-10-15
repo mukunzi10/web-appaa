@@ -1,0 +1,21 @@
+{
+  "name": "web-appaa",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "jest-junit": {
+    "outputDirectory": "coverage",
+    "outputName": "junit.xml"
+  },
+  "scripts": {
+    "test": "jest"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "jest": "^30.2.0",
+    "jest-junit": "^16.0.0",
+    "supertest": "^7.1.4"
+  }
+}
